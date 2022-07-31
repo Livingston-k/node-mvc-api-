@@ -13,6 +13,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // ROUTES
+const productroutes = require('./routes/productRouter')
+app.use('/api/products', productroutes)
+
+// DEFAULT API
 app.get('/', (req, res) => {
     res.send({
         'msg': 'Use postman to consume the api'
