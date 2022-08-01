@@ -32,7 +32,12 @@ const getPublishedProduct = async(req, res) => {
 const getOneProduct = async(req, res) => {
     let id = req.params.id
     let product = await Product.findOne({ where: { id: id } })
-    res.send(product)
+    if (product) {
+        return res.send(product)
+    }
+    res.status(404).send({ 'msg': `Product with id ${id} is not found` })
+
+
 }
 
 // UPDATE PRODUCT
